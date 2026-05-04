@@ -1,0 +1,52 @@
+# ── Entorno virtual ──────────────────────────────────────────
+venv/
+.venv/
+env/
+ENV/
+
+# ── Variables de entorno (contiene API keys — NUNCA subir) ───
+.env
+.env.local
+.env.production
+# .env.example sí se sube (plantilla sin valores reales)
+
+# ── Datos (nunca subir datos de estudiantes al repo) ─────────
+data/raw/
+data/processed/
+data/synthetic/
+data/checkpoints/
+data/reports/
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.so
+*.pyd
+
+# ── pytest ────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Streamlit ─────────────────────────────────────────────────
+.streamlit/
+
+# ── IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Sistema ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

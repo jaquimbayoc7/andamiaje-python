@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Segoe UI, Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#0f172a" rx="14"/>
+  <text x="600" y="34" text-anchor="middle" font-size="19" font-weight="bold" fill="#f1f5f9">Arquitectura Técnica — Andamiaje Python v2</text>
+  <text x="600" y="52" text-anchor="middle" font-size="11" fill="#94a3b8">FastAPI · PostgreSQL · Claude Haiku · scikit-learn · Streamlit · SendGrid · Render — v2.0.0</text>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  LAYER 1: STREAMLIT FRONTEND               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <rect x="20" y="68" width="380" height="300" rx="10" fill="#1e293b" stroke="#60a5fa" stroke-width="2"/>
+  <rect x="20" y="68" width="380" height="28" rx="10" fill="#2563eb"/>
+  <text x="210" y="87" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🖥️ Streamlit Frontend</text>
+
+  <!-- Pages grid -->
+  <rect x="32" y="104" width="105" height="38" rx="5" fill="#1d4ed8" stroke="#93c5fd"/>
+  <text x="84" y="119" text-anchor="middle" font-size="9" fill="#dbeafe" font-weight="bold">00_Login.py</text>
+  <text x="84" y="132" text-anchor="middle" font-size="8" fill="#93c5fd">JWT auth · roles</text>
+
+  <rect x="147" y="104" width="105" height="38" rx="5" fill="#1d4ed8" stroke="#93c5fd"/>
+  <text x="199" y="119" text-anchor="middle" font-size="9" fill="#dbeafe" font-weight="bold">06_Docente.py</text>
+  <text x="199" y="132" text-anchor="middle" font-size="8" fill="#93c5fd">preguntas · analytics</text>
+
+  <rect x="262" y="104" width="128" height="38" rx="5" fill="#1d4ed8" stroke="#93c5fd"/>
+  <text x="326" y="119" text-anchor="middle" font-size="9" fill="#dbeafe" font-weight="bold">09_Admin.py</text>
+  <text x="326" y="132" text-anchor="middle" font-size="8" fill="#93c5fd">global analytics · alertas</text>
+
+  <rect x="32" y="152" width="105" height="38" rx="5" fill="#1e3a8a" stroke="#93c5fd"/>
+  <text x="84" y="167" text-anchor="middle" font-size="9" fill="#dbeafe" font-weight="bold">07_Chat.py</text>
+  <text x="84" y="180" text-anchor="middle" font-size="8" fill="#93c5fd">chat_message · editor</text>
+
+  <rect x="147" y="152" width="105" height="38" rx="5" fill="#1e3a8a" stroke="#93c5fd"/>
+  <text x="199" y="167" text-anchor="middle" font-size="9" fill="#dbeafe" font-weight="bold">08_MiProgreso.py</text>
+  <text x="199" y="180" text-anchor="middle" font-size="8" fill="#93c5fd">radar chart · ruta</text>
+
+  <rect x="262" y="152" width="128" height="38" rx="5" fill="#1e3a8a" stroke="#93c5fd"/>
+  <text x="326" y="167" text-anchor="middle" font-size="9" fill="#dbeafe" font-weight="bold">01–05 Pipeline</text>
+  <text x="326" y="180" text-anchor="middle" font-size="8" fill="#93c5fd">Investigación existente</text>
+
+  <!-- pages/utils.py -->
+  <rect x="32" y="200" width="358" height="32" rx="5" fill="#0f3460" stroke="#7dd3fc"/>
+  <text x="211" y="216" text-anchor="middle" font-size="9" fill="#7dd3fc" font-weight="bold">pages/utils.py — api_call(method, path, token) → httpx → FastAPI</text>
+  <text x="211" y="228" text-anchor="middle" font-size="8" fill="#93c5fd">API_URL = os.getenv("API_URL", "http://localhost:8000")</text>
+
+  <rect x="32" y="242" width="170" height="44" rx="5" fill="#164e63" stroke="#22d3ee"/>
+  <text x="117" y="258" text-anchor="middle" font-size="9" fill="#a5f3fc" font-weight="bold">session_state</text>
+  <text x="117" y="270" text-anchor="middle" font-size="8" fill="#67e8f9">token JWT · rol · usuario_id</text>
+  <text x="117" y="282" text-anchor="middle" font-size="8" fill="#67e8f9">curso_id · nombre</text>
+
+  <rect x="212" y="242" width="178" height="44" rx="5" fill="#164e63" stroke="#22d3ee"/>
+  <text x="301" y="258" text-anchor="middle" font-size="9" fill="#a5f3fc" font-weight="bold">Plotly charts</text>
+  <text x="301" y="270" text-anchor="middle" font-size="8" fill="#67e8f9">heatmap_plotly · radar_chart</text>
+  <text x="301" y="282" text-anchor="middle" font-size="8" fill="#67e8f9">bar_chart · line_chart</text>
+
+  <rect x="32" y="295" width="358" height="28" rx="5" fill="#0c1a2e" stroke="#475569"/>
+  <text x="211" y="309" text-anchor="middle" font-size="8" fill="#64748b">🔒 Toda página verifica token al inicio → sin token redirige a 00_Login.py</text>
+  <text x="211" y="322" text-anchor="middle" font-size="8" fill="#64748b">🔒 Rutas guardadas solo si rol permite la página</text>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  LAYER 2: FASTAPI BACKEND                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <rect x="430" y="68" width="380" height="480" rx="10" fill="#1e293b" stroke="#4ade80" stroke-width="2"/>
+  <rect x="430" y="68" width="380" height="28" rx="10" fill="#15803d"/>
+  <text x="620" y="87" text-anchor="middle" font-size="12" font-weight="bold" fill="white">⚡ FastAPI Backend (backend/)</text>
+
+  <!-- Routers -->
+  <rect x="442" y="104" width="356" height="22" rx="4" fill="#14532d" stroke="#86efac"/>
+  <text x="620" y="119" text-anchor="middle" font-size="9" fill="#bbf7d0" font-weight="bold">Routers: /api/auth · /api/preguntas · /api/chat · /api/evaluaciones · /api/analiticas · /api/admin/estudiantes · /api/admin</text>
+
+  <!-- Core -->
+  <rect x="442" y="135" width="170" height="72" rx="5" fill="#052e16" stroke="#86efac"/>
+  <text x="527" y="151" text-anchor="middle" font-size="9" fill="#86efac" font-weight="bold">core/</text>
+  <text x="527" y="165" text-anchor="middle" font-size="8" fill="#6ee7b7">security.py: JWT · bcrypt</text>
+  <text x="527" y="177" text-anchor="middle" font-size="8" fill="#6ee7b7">database.py: AsyncSession</text>
+  <text x="527" y="189" text-anchor="middle" font-size="8" fill="#6ee7b7">config.py: pydantic-settings</text>
+
+  <!-- Models -->
+  <rect x="622" y="135" width="176" height="72" rx="5" fill="#052e16" stroke="#86efac"/>
+  <text x="710" y="151" text-anchor="middle" font-size="9" fill="#86efac" font-weight="bold">models/ + schemas/</text>
+  <text x="710" y="165" text-anchor="middle" font-size="8" fill="#6ee7b7">usuario · curso · pregunta</text>
+  <text x="710" y="177" text-anchor="middle" font-size="8" fill="#6ee7b7">sesion_chat · evaluacion</text>
+  <text x="710" y="189" text-anchor="middle" font-size="8" fill="#6ee7b7">prediccion_riesgo</text>
+
+  <!-- Services -->
+  <text x="620" y="225" text-anchor="middle" font-size="10" fill="#4ade80" font-weight="bold">services/</text>
+
+  <rect x="442" y="232" width="166" height="52" rx="5" fill="#1a2e1a" stroke="#4ade80"/>
+  <text x="525" y="248" text-anchor="middle" font-size="9" fill="#86efac" font-weight="bold">andamiaje_service.py</text>
+  <text x="525" y="260" text-anchor="middle" font-size="8" fill="#6ee7b7">Haiku × 3 niveles por pregunta</text>
+  <text x="525" y="272" text-anchor="middle" font-size="8" fill="#6ee7b7">usa claude_haiku.py</text>
+
+  <rect x="622" y="232" width="176" height="52" rx="5" fill="#1a2e1a" stroke="#4ade80"/>
+  <text x="710" y="248" text-anchor="middle" font-size="9" fill="#86efac" font-weight="bold">chat_service.py</text>
+  <text x="710" y="260" text-anchor="middle" font-size="8" fill="#6ee7b7">progresión andamiaje</text>
+  <text x="710" y="272" text-anchor="middle" font-size="8" fill="#6ee7b7">selección ejercicio</text>
+
+  <rect x="442" y="294" width="166" height="52" rx="5" fill="#1a2e1a" stroke="#4ade80"/>
+  <text x="525" y="310" text-anchor="middle" font-size="9" fill="#86efac" font-weight="bold">scoring_service.py</text>
+  <text x="525" y="322" text-anchor="middle" font-size="8" fill="#6ee7b7">fórmula 40+30+20+10</text>
+  <text x="525" y="334" text-anchor="middle" font-size="8" fill="#6ee7b7">Haiku: ruta JSON → envía email auto</text>
+
+  <rect x="622" y="294" width="176" height="52" rx="5" fill="#1a2e1a" stroke="#4ade80"/>
+  <text x="710" y="310" text-anchor="middle" font-size="9" fill="#86efac" font-weight="bold">email_service.py</text>
+  <text x="710" y="322" text-anchor="middle" font-size="8" fill="#6ee7b7">SendGrid HTML template</text>
+  <text x="710" y="334" text-anchor="middle" font-size="8" fill="#6ee7b7">✨ auto al /calcular + reenvío manual</text>
+
+  <rect x="442" y="356" width="356" height="60" rx="5" fill="#1a2e1a" stroke="#4ade80"/>
+  <text x="620" y="372" text-anchor="middle" font-size="9" fill="#86efac" font-weight="bold">analytics_service.py</text>
+  <text x="620" y="386" text-anchor="middle" font-size="8" fill="#6ee7b7">heatmap · cohortes · abandono · distribucion · temas_debiles</text>
+  <text x="620" y="398" text-anchor="middle" font-size="8" fill="#6ee7b7">RandomForestClassifier → en_riesgo (0/1) · score_riesgo float</text>
+  <text x="620" y="410" text-anchor="middle" font-size="8" fill="#6ee7b7">re-entrena cada 50 eval · modelo: data/models/riesgo_model.pkl</text>
+
+  <!-- src/ reuse -->
+  <rect x="442" y="428" width="356" height="50" rx="5" fill="#0c1f0c" stroke="#86efac"/>
+  <text x="620" y="443" text-anchor="middle" font-size="9" fill="#4ade80" font-weight="bold">src/ (módulos reutilizados del proyecto original)</text>
+  <text x="620" y="457" text-anchor="middle" font-size="8" fill="#6ee7b7">claude_haiku.py · evaluator.py · reward_schema.py · ab_generator.py · student_profiler.py</text>
+  <text x="620" y="469" text-anchor="middle" font-size="8" fill="#6ee7b7">exercises/ → seed.py carga 30 ejercicios como preguntas iniciales</text>
+
+  <!-- Alembic -->
+  <rect x="442" y="488" width="356" height="28" rx="5" fill="#0d3321" stroke="#86efac"/>
+  <text x="620" y="504" text-anchor="middle" font-size="9" fill="#86efac" font-weight="bold">alembic/ — Migraciones DB · alembic upgrade head en startup</text>
+  <text x="620" y="516" text-anchor="middle" font-size="8" fill="#6ee7b7">backend/scripts/seed.py → datos iniciales</text>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  LAYER 3: EXTERNAL SERVICES                -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Claude Haiku -->
+  <rect x="840" y="68" width="175" height="130" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="840" y="68" width="175" height="26" rx="10" fill="#b45309"/>
+  <text x="927" y="84" text-anchor="middle" font-size="11" font-weight="bold" fill="white">🤖 Claude Haiku API</text>
+  <text x="927" y="107" text-anchor="middle" font-size="9" fill="#fde68a">claude-haiku-4-5</text>
+  <text x="927" y="121" text-anchor="middle" font-size="8" fill="#fcd34d">• Generar andamiajes (×3)</text>
+  <text x="927" y="133" text-anchor="middle" font-size="8" fill="#fcd34d">• Chat pedagógico</text>
+  <text x="927" y="145" text-anchor="middle" font-size="8" fill="#fcd34d">• Score semántico código</text>
+  <text x="927" y="157" text-anchor="middle" font-size="8" fill="#fcd34d">• Ruta aprendizaje JSON</text>
+  <text x="927" y="169" text-anchor="middle" font-size="8" fill="#fcd34d">• Insights narrativos grupo</text>
+
+  <!-- SendGrid -->
+  <rect x="840" y="213" width="175" height="100" rx="10" fill="#1e293b" stroke="#ec4899" stroke-width="2"/>
+  <rect x="840" y="213" width="175" height="26" rx="10" fill="#9d174d"/>
+  <text x="927" y="228" text-anchor="middle" font-size="11" font-weight="bold" fill="white">📧 SendGrid</text>
+  <text x="927" y="251" text-anchor="middle" font-size="9" fill="#fbcfe8">Free tier: 100/día</text>
+  <text x="927" y="263" text-anchor="middle" font-size="8" fill="#f9a8d4">• Score al estudiante</text>
+  <text x="927" y="275" text-anchor="middle" font-size="8" fill="#f9a8d4">• Ruta aprendizaje HTML</text>
+  <text x="927" y="287" text-anchor="middle" font-size="8" fill="#f9a8d4">• ✨ Auto al calcular corte</text>
+  <text x="927" y="299" text-anchor="middle" font-size="8" fill="#f9a8d4">• Alerta riesgo al docente</text>
+
+  <!-- ML -->
+  <rect x="840" y="328" width="175" height="100" rx="10" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <rect x="840" y="328" width="175" height="26" rx="10" fill="#6d28d9"/>
+  <text x="927" y="344" text-anchor="middle" font-size="11" font-weight="bold" fill="white">🔮 scikit-learn ML</text>
+  <text x="927" y="367" text-anchor="middle" font-size="9" fill="#ddd6fe">RandomForestClassifier</text>
+  <text x="927" y="379" text-anchor="middle" font-size="8" fill="#c4b5fd">• Features: scores por tema</text>
+  <text x="927" y="391" text-anchor="middle" font-size="8" fill="#c4b5fd">  semestre · intentos · corte</text>
+  <text x="927" y="403" text-anchor="middle" font-size="8" fill="#c4b5fd">• Target: en_riesgo (0/1)</text>
+  <text x="927" y="415" text-anchor="middle" font-size="8" fill="#c4b5fd">• Pkl: data/models/riesgo.pkl</text>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  LAYER 4: DATA                             -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- PostgreSQL -->
+  <rect x="430" y="570" width="380" height="170" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+  <rect x="430" y="570" width="380" height="26" rx="10" fill="#c2410c"/>
+  <text x="620" y="587" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🐘 PostgreSQL</text>
+
+  <rect x="442" y="603" width="100" height="48" rx="5" fill="#431407" stroke="#fb923c"/>
+  <text x="492" y="620" text-anchor="middle" font-size="8" fill="#fdba74" font-weight="bold">usuarios</text>
+  <text x="492" y="633" text-anchor="middle" font-size="7" fill="#fed7aa">id · nombre · email</text>
+  <text x="492" y="645" text-anchor="middle" font-size="7" fill="#fed7aa">rol · password_hash</text>
+
+  <rect x="552" y="603" width="100" height="48" rx="5" fill="#431407" stroke="#fb923c"/>
+  <text x="602" y="620" text-anchor="middle" font-size="8" fill="#fdba74" font-weight="bold">preguntas</text>
+  <text x="602" y="633" text-anchor="middle" font-size="7" fill="#fed7aa">enunciado · nivel</text>
+  <text x="602" y="645" text-anchor="middle" font-size="7" fill="#fed7aa">tema · docente_id</text>
+
+  <rect x="662" y="603" width="100" height="48" rx="5" fill="#431407" stroke="#fb923c"/>
+  <text x="712" y="620" text-anchor="middle" font-size="8" fill="#fdba74" font-weight="bold">evaluaciones</text>
+  <text x="712" y="633" text-anchor="middle" font-size="7" fill="#fed7aa">score_global · corte</text>
+  <text x="712" y="645" text-anchor="middle" font-size="7" fill="#fed7aa">ruta_aprendizaje (JSONB)</text>
+
+  <rect x="442" y="661" width="100" height="48" rx="5" fill="#431407" stroke="#fb923c"/>
+  <text x="492" y="678" text-anchor="middle" font-size="8" fill="#fdba74" font-weight="bold">sesiones_chat</text>
+  <text x="492" y="691" text-anchor="middle" font-size="7" fill="#fed7aa">estudiante · pregunta</text>
+  <text x="492" y="703" text-anchor="middle" font-size="7" fill="#fed7aa">corte · score_final</text>
+
+  <rect x="552" y="661" width="100" height="48" rx="5" fill="#431407" stroke="#fb923c"/>
+  <text x="602" y="678" text-anchor="middle" font-size="8" fill="#fdba74" font-weight="bold">andamiajes</text>
+  <text x="602" y="691" text-anchor="middle" font-size="7" fill="#fed7aa">nivel · contenido</text>
+  <text x="602" y="703" text-anchor="middle" font-size="7" fill="#fed7aa">pregunta_id</text>
+
+  <rect x="662" y="661" width="100" height="48" rx="5" fill="#431407" stroke="#fb923c"/>
+  <text x="712" y="678" text-anchor="middle" font-size="8" fill="#fdba74" font-weight="bold">predicciones_riesgo</text>
+  <text x="712" y="691" text-anchor="middle" font-size="7" fill="#fed7aa">score_riesgo · en_riesgo</text>
+  <text x="712" y="703" text-anchor="middle" font-size="7" fill="#fed7aa">temas_debiles (JSONB)</text>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  LAYER 5: RENDER DEPLOY                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <rect x="20" y="570" width="390" height="170" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+  <rect x="20" y="570" width="390" height="26" rx="10" fill="#065f46"/>
+  <text x="215" y="586" text-anchor="middle" font-size="12" font-weight="bold" fill="white">☁️ Render Deploy</text>
+
+  <rect x="32" y="603" width="112" height="52" rx="5" fill="#022c22" stroke="#34d399"/>
+  <text x="88" y="620" text-anchor="middle" font-size="9" fill="#6ee7b7" font-weight="bold">andamiaje-api</text>
+  <text x="88" y="634" text-anchor="middle" font-size="8" fill="#a7f3d0">Web Service</text>
+  <text x="88" y="646" text-anchor="middle" font-size="8" fill="#a7f3d0">Docker · port 8000</text>
+
+  <rect x="154" y="603" width="112" height="52" rx="5" fill="#022c22" stroke="#34d399"/>
+  <text x="210" y="620" text-anchor="middle" font-size="9" fill="#6ee7b7" font-weight="bold">andamiaje-app</text>
+  <text x="210" y="634" text-anchor="middle" font-size="8" fill="#a7f3d0">Web Service</text>
+  <text x="210" y="646" text-anchor="middle" font-size="8" fill="#a7f3d0">Streamlit · port 8501</text>
+
+  <rect x="276" y="603" width="122" height="52" rx="5" fill="#022c22" stroke="#34d399"/>
+  <text x="337" y="620" text-anchor="middle" font-size="9" fill="#6ee7b7" font-weight="bold">andamiaje-db</text>
+  <text x="337" y="634" text-anchor="middle" font-size="8" fill="#a7f3d0">PostgreSQL Addon</text>
+  <text x="337" y="646" text-anchor="middle" font-size="8" fill="#a7f3d0">Free → $7/mes</text>
+
+  <rect x="32" y="664" width="366" height="50" rx="5" fill="#011a12" stroke="#6ee7b7"/>
+  <text x="215" y="679" text-anchor="middle" font-size="8" fill="#34d399" font-weight="bold">render.yaml · Dockerfile · ENV vars en dashboard Render</text>
+  <text x="215" y="692" text-anchor="middle" font-size="8" fill="#a7f3d0">DATABASE_URL · ANTHROPIC_API_KEY · SENDGRID_API_KEY · JWT_SECRET_KEY</text>
+  <text x="215" y="705" text-anchor="middle" font-size="8" fill="#a7f3d0">Startup: alembic upgrade head &amp;&amp; python backend/scripts/seed.py</text>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  LAYER 6: LEGEND / ARROWS SUMMARY          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <rect x="840" y="448" width="345" height="140" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="1012" y="466" text-anchor="middle" font-size="10" font-weight="bold" fill="#e2e8f0">Flujo de Datos</text>
+
+  <line x1="855" y1="483" x2="895" y2="483" stroke="#60a5fa" stroke-width="2" marker-end="url(#b1)"/>
+  <text x="910" y="487" font-size="9" fill="#93c5fd">HTTP REST (httpx) Streamlit → FastAPI</text>
+
+  <line x1="855" y1="503" x2="895" y2="503" stroke="#4ade80" stroke-width="2" marker-end="url(#b2)"/>
+  <text x="910" y="507" font-size="9" fill="#86efac">asyncpg SQLAlchemy → PostgreSQL</text>
+
+  <line x1="855" y1="523" x2="895" y2="523" stroke="#f59e0b" stroke-width="2" marker-end="url(#b3)"/>
+  <text x="910" y="527" font-size="9" fill="#fcd34d">Anthropic API (claude_haiku.py)</text>
+
+  <line x1="855" y1="543" x2="895" y2="543" stroke="#ec4899" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#b4)"/>
+  <text x="910" y="547" font-size="9" fill="#f9a8d4">SendGrid SMTP / API</text>
+
+  <line x1="855" y1="563" x2="895" y2="563" stroke="#a78bfa" stroke-width="2" stroke-dasharray="6,2" marker-end="url(#b5)"/>
+  <text x="910" y="567" font-size="9" fill="#c4b5fd">joblib pkl read/write (ML model)</text>
+
+  <text x="855" y="583" font-size="8" fill="#475569">① Streamlit → FastAPI  ② FastAPI → PostgreSQL</text>
+  <text x="855" y="593" font-size="8" fill="#475569">③ services → Haiku API  ④ scoring → SendGrid  ⑤ analytics → ML</text>
+
+  <!-- Connection lines summary -->
+  <!-- Streamlit → FastAPI -->
+  <line x1="400" y1="220" x2="430" y2="380" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#b1)"/>
+
+  <!-- FastAPI → Claude -->
+  <line x1="810" y1="260" x2="840" y2="133" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#b3)"/>
+
+  <!-- FastAPI → SendGrid -->
+  <line x1="810" y1="313" x2="840" y2="263" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#b4)"/>
+
+  <!-- FastAPI → ML -->
+  <line x1="810" y1="390" x2="840" y2="378" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6,2" marker-end="url(#b5)"/>
+
+  <!-- FastAPI → PostgreSQL -->
+  <line x1="620" y1="548" x2="620" y2="570" stroke="#4ade80" stroke-width="2" marker-end="url(#b2)"/>
+
+  <!-- Render boxes -->
+  <line x1="215" y1="570" x2="215" y2="548" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="215" y1="548" x2="400" y2="548" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="400" y1="548" x2="430" y2="548" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+  <defs>
+    <marker id="b1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#60a5fa"/></marker>
+    <marker id="b2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#4ade80"/></marker>
+    <marker id="b3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f59e0b"/></marker>
+    <marker id="b4" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#ec4899"/></marker>
+    <marker id="b5" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#a78bfa"/></marker>
+  </defs>
+
+  <!-- Cost footer -->
+  <rect x="840" y="600" width="345" height="68" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="1012" y="618" text-anchor="middle" font-size="10" font-weight="bold" fill="#e2e8f0">Costo estimado / mes</text>
+  <text x="855" y="635" font-size="9" fill="#94a3b8">Render web services (free)  $0 | PostgreSQL $0→$7</text>
+  <text x="855" y="650" font-size="9" fill="#94a3b8">Claude Haiku ~2000 calls   $2 | SendGrid 100/day $0</text>
+  <text x="855" y="665" font-size="9" fill="#6ee7b7" font-weight="bold">Total: ~$2–9 / mes</text>
+
+</svg>
