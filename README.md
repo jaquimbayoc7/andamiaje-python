@@ -254,3 +254,7 @@ Los tests cubren los tres niveles de ejercicios (junior, semi-senior, senior) co
 ## Licencia
 
 MIT — libre para uso académico y educativo.
+
+---
+
+Desarrollado por **Ing. Julian Andres Quimbayo Castro**
