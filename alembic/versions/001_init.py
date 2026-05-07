@@ -47,7 +47,7 @@ def upgrade() -> None:
         sa.Column("nombre_completo", sa.String(150), nullable=False),
         sa.Column("email", sa.String(254), nullable=False, unique=True),
         sa.Column("password_hash", sa.String(255), nullable=False),
-        sa.Column("rol", sa.Enum("admin", "docente", "estudiante", name="rolusuario"), nullable=False),
+        sa.Column("rol", postgresql.ENUM(name="rolusuario", create_type=False), nullable=False),
         sa.Column("activo", sa.Boolean(), nullable=False, server_default="true"),
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now()),
     )
@@ -70,7 +70,7 @@ def upgrade() -> None:
         sa.Column("titulo", sa.String(300), nullable=False),
         sa.Column("enunciado", sa.Text(), nullable=False),
         sa.Column("solucion_referencia", sa.Text(), nullable=False),
-        sa.Column("nivel", sa.Enum("junior", "semi_senior", "senior", name="nivelpregunta"), nullable=False),
+        sa.Column("nivel", postgresql.ENUM(name="nivelpregunta", create_type=False), nullable=False),
         sa.Column("tema", sa.String(100), nullable=False),
         sa.Column("docente_id", sa.Integer(), sa.ForeignKey("usuarios.id"), nullable=True),
         sa.Column("activa", sa.Boolean(), nullable=False, server_default="true"),
@@ -82,7 +82,7 @@ def upgrade() -> None:
         "andamiajes",
         sa.Column("id", sa.Integer(), primary_key=True),
         sa.Column("pregunta_id", sa.Integer(), sa.ForeignKey("preguntas.id"), nullable=False),
-        sa.Column("nivel_andamiaje", sa.Enum("minimo", "parcial", "completo", name="nivelandamiaje"), nullable=False),
+        sa.Column("nivel_andamiaje", postgresql.ENUM(name="nivelandamiaje", create_type=False), nullable=False),
         sa.Column("contenido", sa.Text(), nullable=False),
     )
     op.create_index("ix_andamiajes_id", "andamiajes", ["id"])
@@ -113,7 +113,7 @@ def upgrade() -> None:
         "mensajes_chat",
         sa.Column("id", sa.Integer(), primary_key=True),
         sa.Column("sesion_id", sa.Integer(), sa.ForeignKey("sesiones_chat.id"), nullable=False),
-        sa.Column("rol", sa.Enum("user", "assistant", name="rolmensaje"), nullable=False),
+        sa.Column("rol", postgresql.ENUM(name="rolmensaje", create_type=False), nullable=False),
         sa.Column("contenido", sa.Text(), nullable=False),
         sa.Column("timestamp", sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now()),
     )
